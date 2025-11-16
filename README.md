@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # code_alpha_quote_app
 
 A new Flutter project.
@@ -14,3 +15,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# Quote-App
+>>>>>>> dd7d73845559617eef98dea8073c7fb563aa6add
