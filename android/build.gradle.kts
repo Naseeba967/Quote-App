@@ -1,10 +1,24 @@
+buildscript {
+    repositories {
+        maven("https://storage.flutter-io.cn/download.flutter.io")   // Flutter mirror
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.1.2") // keep your version
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.10")
+    }
+}
+
 allprojects {
     repositories {
+        maven("https://storage.flutter-io.cn/download.flutter.io")
         google()
         mavenCentral()
     }
 }
 
+// ----------  the rest of your file stays untouched ----------
 val newBuildDir: Directory =
     rootProject.layout.buildDirectory
         .dir("../../build")

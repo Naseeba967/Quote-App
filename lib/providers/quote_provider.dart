@@ -8,7 +8,7 @@ enum QuoteStatus { initial, loading, loaded, error }
 
 class QuoteProvider extends ChangeNotifier {
   final ApiServices _apiServices = ApiServices();
-  final StorageService _storageService = StorageService();
+  final StorageService _storageService = StorageService(); 
 
   QuoteModel? _currentQuote;
   QuoteStatus _status = QuoteStatus.initial;
@@ -84,7 +84,7 @@ class QuoteProvider extends ChangeNotifier {
       _currentQuote = await _storageService.getLastQuote();
       if (_currentQuote != null) {
         _status = QuoteStatus.loaded;
-        _error = 'Showing cached quote. ${_error}';
+        _error = 'Showing cached quote. $_error';
         await _checkIfFavorite();
       }
     }

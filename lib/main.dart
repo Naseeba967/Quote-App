@@ -17,9 +17,11 @@ class MyApp extends StatelessWidget {
       create: (_) => QuoteProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+         themeMode: ThemeMode.light,
         title: 'Daily Quote ',
+
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple).copyWith(background: Colors.grey.shade100.withOpacity(0.5)),
         ),
         home: const QuoteScreen(),
       ),
