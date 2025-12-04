@@ -54,7 +54,10 @@ class _QuoteScreenState extends State<QuoteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.withValues(alpha: 0.1),
+      
+         
+  backgroundColor: AppColors.background,
+
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -114,69 +117,73 @@ class _QuoteScreenState extends State<QuoteScreen> {
 
       body: Consumer<QuoteProvider>(
         builder: (context, provider, child) {
-          return Container(
-            height: MediaQuery.of(context).size.height - 100,
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: Column(
-              children: [
-                if (provider.currentQuote != null)
-                  QuoteCard(quoteModel: provider.currentQuote!)
-                else if (provider.status == QuoteStatus.error &&
-                    provider.currentQuote == null)
-                  buildErrorState(context, provider)
-                else
-                  Center(child: CircularProgressIndicator()),
-
-                const SizedBox(height: 40),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ActionButton(
-                      icon: provider.isFavorite
-                          ? Icons.favorite
-                          : Icons.favorite_border_outlined,
-                      onPressed: () => _handleFavorite(provider),
-                    ),
-                    ActionButton(
-                      icon: Icons.copy,
-                      onPressed: () => _handleCopy(provider.currentQuote!),
-                    ),
-                    ActionButton(
-                      icon: Icons.share,
-                      onPressed: () => _handleShare(provider.currentQuote!),
-                    ),
-                  ],
-                ),
-                // const Spacer(),
-                const SizedBox(height: 70),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 40,
-                    child: ElevatedButton(
-                      onPressed: provider.isLoading
-                          ? null
-                          : () => provider.fetchNewQuote(),
-
-                      style: ElevatedButton.styleFrom(
-                        // elevation: 4,
-                        backgroundColor: AppColors.primary,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        shadowColor: AppColors.primary.withValues(alpha: 0.4),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 60,
-                          vertical: 18,
-                        ),
+          return SafeArea(
+            child: Container(
+              height: MediaQuery.of(context).size.height - 100,
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Column(
+                children: [
+                  SizedBox( height: 30,),
+                  if (provider.currentQuote != null)
+                    QuoteCard(quoteModel: provider.currentQuote!)
+                  else if (provider.status == QuoteStatus.error &&
+                      provider.currentQuote == null)
+                    buildErrorState(context, provider)
+                  else
+                    Center(child: CircularProgressIndicator()),
+            
+                  const SizedBox(height: 40),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ActionButton(
+                        icon: provider.isFavorite
+                            ? Icons.favorite
+                            : Icons.favorite_border_outlined,
+                        onPressed: () => _handleFavorite(provider),
                       ),
-                      child: Text('New Quote'),
+                      ActionButton(
+                        icon: Icons.copy,
+                        onPressed: () => _handleCopy(provider.currentQuote!),
+                      ),
+                      ActionButton(
+                        icon: Icons.share,
+                        onPressed: () => _handleShare(provider.currentQuote!),
+                      ),
+                    ],
+                  ),
+                  // const Spacer(),
+                  const SizedBox(height: 70),
+                  Padding(
+                    padding: EdgeInsets.symmetric( horizontal: 30),
+                    child: SizedBox(
+                      
+                      width: double.infinity,
+                      height: 55,
+                      child: ElevatedButton(
+                        onPressed: provider.isLoading
+                            ? null
+                            : () => provider.fetchNewQuote(),
+            
+                        style: ElevatedButton.styleFrom(
+                          // elevation: 4,
+                          backgroundColor: AppColors.primary,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          shadowColor: AppColors.primary.withValues(alpha: 0.4),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 60,
+                            vertical: 18,
+                          ),
+                        ),
+                        child: Text('New Quote'),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },

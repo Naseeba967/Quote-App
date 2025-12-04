@@ -18,11 +18,16 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
          themeMode: ThemeMode.light,
+            darkTheme: ThemeData.light(),
         title: 'Daily Quote ',
 
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple).copyWith(background: Colors.grey.shade100.withOpacity(0.5)),
-        ),
+        theme: ThemeData.light(
+      
+        ).copyWith(  
+          
+            scaffoldBackgroundColor: Colors.grey,
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),),
+        
         home: const QuoteScreen(),
       ),
     );
